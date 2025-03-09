@@ -9,11 +9,13 @@ import Footer from "@/components/footer/footer";
 
 type Props = {
   children: ReactNode;
-  params: { locale: string };
+  params: Promise<{ locale: string }>; // params is a Promise
 };
 
 export default async function RootLayout({ children, params }: Props) {
-  const locale = params.locale || "en"; // Default to "en" if undefined
+  // Await the params promise to resolve the actual values
+  const resolvedParams = await params;
+  const locale = resolvedParams.locale || "en"; // Default to "en" if undefined
 
   // Validate the locale
   if (!locales.includes(locale as typeof locales[number])) {

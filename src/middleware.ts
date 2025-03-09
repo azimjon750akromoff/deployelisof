@@ -1,12 +1,19 @@
 import createMiddleware from "next-intl/middleware";
 
+// Define supported locales
+const locales = ["ru", "uz", "en"] as const;
+
+// Create the middleware
 const middleware = createMiddleware({
-  locales: ["ru", "uz", "en"], // Keep the order the same as in your config
-  defaultLocale: "en", // Set the default language
+  locales, // Supported locales
+  defaultLocale: "en", // Default locale
+  localePrefix: "as-needed", // Options: "always", "never", "as-needed"
 });
 
-export default middleware; // ✅ Correctly export as default
+// Export the middleware
+export default middleware;
 
+// Middleware configuration
 export const config = {
   matcher: ["/((?!api|_next|.*\\..*).*)"], // Ensures middleware runs on all pages
 };

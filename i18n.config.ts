@@ -1,6 +1,7 @@
 import { createSharedPathnamesNavigation } from "next-intl/navigation";
 
 export const locales = ["ru", "uz", "en"] as const;
+export const defaultLocale = "en"
 export type Locale = (typeof locales)[number];
 
 export const localeNames: Record<Locale, string> = {

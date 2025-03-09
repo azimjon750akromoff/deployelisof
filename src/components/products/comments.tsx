@@ -1,0 +1,70 @@
+import Image from "next/image";
+import StarRating from "./star-rating";
+import React from "react";
+
+const reviews = [
+  {
+    name: "Floyd Miles",
+    body: "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.",
+    img: "/imgs/face.png",
+    rating: 3.5,
+  },
+  {
+    name: "Ronald Richards",
+    body: "ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.",
+    img: "/imgs/face2.png",
+    rating: 4,
+  },
+  {
+    name: "Floyd Miles",
+    body: "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.",
+    img: "/imgs/face.png",
+    rating: 3.5,
+  },
+  {
+    name: "Ronald Richards",
+    body: "ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.",
+    img: "/imgs/face2.png",
+    rating: 4,
+  },
+];
+
+const ReviewCard = ({ img, name, body, rating }:any) => {
+  return (
+    <figure className="relative h-[386px] w-[300px] md:w-[550px] rounded-[5px] border p-4 md:p-8 flex-shrink-0">
+      <div className="flex justify-between">
+        <div className="flex flex-col gap-4">
+          <Image
+            width="60"
+            height="60"
+            alt=""
+            src={img}
+            className="w-[60px] h-[60px] md:w-[80px] md:h-[80px]"
+          />
+          <figcaption className="text-xl md:text-[29px] font-gilroy font-semibold text-[#133240] w-full md:w-[229px] dark:text-white">
+            {name}
+          </figcaption>
+        </div>
+        <StarRating type="button" rating={rating} size={20} />
+      </div>
+      <blockquote className="mt-2 font-gilroy text-base md:text-[21px] w-full md:w-[484px] font-normal leading-normal tracking-[0.428px]">
+        {body}
+      </blockquote>
+    </figure>
+  );
+};
+
+export function MarqueeDemo({ offset }:any) {
+  return (
+    <div className="relative w-full overflow-hidden">
+      <div
+        className="flex gap-4 md:gap-[30px] transition-transform duration-300 ease-in-out"
+        style={{ transform: `translateX(${offset}px)` }}
+      >
+        {reviews.map((review, index) => (
+          <ReviewCard key={index} {...review} />
+        ))}
+      </div>
+    </div>
+  );
+}

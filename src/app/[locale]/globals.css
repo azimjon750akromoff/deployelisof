@@ -1,0 +1,112 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+  .my-container {
+    max-width: 1170px;
+    margin-right: auto;
+    margin-left: auto;
+    /* border: 1px solid red; */
+    width: 100%;
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+  .container {
+    max-width: 1170px;
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 20px;
+    padding-left: 20px;
+    /* border: 1px solid red; */
+  }
+  
+  /* Responsive container */
+  @media (max-width: 768px) {
+    .container {
+      max-width: 90%; /* Makes it more fluid on smaller screens */
+      padding-right: 10px;
+      padding-left: 10px;
+    }
+  }
+  
+  .swiper_wrapper{
+    /* border: 1px solid red; */
+  }
+  
+
+  .test{
+    /* border: 1px solid red; */ 
+    display: flex;
+    justify-content: end;
+  }
+
+  .test_wrapper {
+    /* border: 1px solid blue; */
+    max-width: 100%;
+    background-size: cover;
+    background-position: center right; /* Adjust background alignment */
+    width: 100%;
+  }
+  
+
+  .max-container{
+    max-width: 1300px;
+    width: 100%;
+    padding-right: 20px;
+    padding-left: 20px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+   .maxi-container{
+    margin-top: 30px;
+    max-width: 1700px;
+    padding-right: 20px;
+    padding-left: 20px;
+    margin-right: auto;
+    margin-left: auto;
+  } 
+  :root {
+    --swiper-navigation-color: black !important;
+  }
+  
+
+  html {
+    scroll-behavior: smooth;
+  }
+  
+
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+  
+  .transform-style-3d {
+    transform-style: preserve-3d;
+  }
+  
+  .rotate-y-0 {
+    transform: rotateY(0deg);
+  }
+  
+  .rotate-y-180 {
+    transform: rotateY(180deg);
+  }
+  
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+  
+
+
+  .swiper-pagination-bullet {
+    width: 12px;
+    height: 12px;
+    background-color: #6D758F;
+    opacity: 0.5;
+  }
+  
+  .swiper-pagination-bullet-active {
+    background-color: #0F1E3D;
+    opacity: 1;
+  }

@@ -16,7 +16,7 @@ const Footer = () => {
           <FooterNav />
 
           {/* Mobile-Only Copyright */}
-          <div className="block w-100% md:hidden mt-6">
+          <div className="block pt-4 w-100% md:hidden mt-6">
             <Copyright />
           </div>
         </div>

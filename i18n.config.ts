@@ -10,7 +10,7 @@ export const defaultLocale = "en";
 export const localePrefix = "as-needed"; // Options: "always", "never", "as-needed"
 
 // Define a type for the locale
-export type Locale = (typeof locales)[number];
+export type Locale = (typeof locales)[number]; // "ru" | "uz" | "en"
 
 // Define human-readable locale names
 export const localeNames: Record<Locale, string> = {

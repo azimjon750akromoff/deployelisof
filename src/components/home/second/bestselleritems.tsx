@@ -7,6 +7,7 @@ function BestSeller() {
 
   return (
     <section id="products" className="pt-[42px]">
+      
       <div className="my-container flex justify-between items-center flex-col">
         <h2 className="font-federo font-normal text-centert text-3xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl">
           {w("bestseller")}

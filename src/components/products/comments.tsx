@@ -54,12 +54,16 @@ const ReviewCard = ({ img, name, body, rating }:any) => {
   );
 };
 
-export function MarqueeDemo({ offset }:any) {
+export function MarqueeDemo({ offset }: any) {
   return (
     <div className="relative w-full overflow-hidden">
       <div
         className="flex gap-4 md:gap-[30px] transition-transform duration-300 ease-in-out"
-        style={{ transform: `translateX(${offset}px)` }}
+        style={{
+          transform: `translateX(${offset}px)`,
+          position: 'relative',  // Ensuring it's positioned correctly
+          zIndex: 10,  // Set z-index directly to ensure it stays in front
+        }}
       >
         {reviews.map((review, index) => (
           <ReviewCard key={index} {...review} />

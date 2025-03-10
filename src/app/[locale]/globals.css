@@ -22,6 +22,37 @@
   /* border: 1px solid red; */
 }
 
+.bg-uzor {
+  background-image: url('/imgs/uzor.png');
+  background-size: auto;
+  background-position: bottom center;
+  background-repeat: no-repeat;
+  width: 98%;
+  height: 125px;
+  margin-left: 400px;
+  margin-top: 80px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1; /* Keep the background behind everything else */
+}
+
+.relative {
+  position: relative;
+}
+
+.relative > .feedback-container {
+  z-index: 1; /* Ensure that Feedback stays above the background */
+}
+
+
+@media (max-width: 768px) {
+  .bg-uzor {
+    margin-left: 200px; /* Adjust for smaller screens */
+    margin-top: 40px; /* Adjust for smaller screens */
+  }
+}
+
 /* Responsive container */
 @media (max-width: 768px) {
   .container {
@@ -44,9 +75,10 @@
 .test_wrapper {
   /* border: 1px solid blue; */
   max-width: 100%;
-  background-size: cover;
-  background-position: center right; /* Adjust background alignment */
   width: 100%;
+  background-size: cover;
+  background-position: center right;
+   /* Adjust background alignment */
 }
 
 .max-container {

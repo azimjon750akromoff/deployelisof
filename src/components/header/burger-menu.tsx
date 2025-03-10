@@ -12,13 +12,21 @@ const BurgerMenu = ({ locale }: { locale: Locale }) => {
   const pathName = usePathname();
   useScrollFixed(open);
 
-  // Close menu on route change
+  // Prevent scrolling when menu is open
   useEffect(() => {
     if (open) {
+      document.body.classList.add("overflow-hidden");
+    } else {
+      document.body.classList.remove("overflow-hidden");
+    }
+  }, [open]);
+
+  // Close menu on route change
+  useEffect(() => {
+    if (pathName) {
       setOpen(false);
     }
-  }, [pathName, open]); 
-  
+  }, [pathName]);
 
   const t = useTranslations("Header.Nav");
   const keysNav = [
@@ -44,12 +52,19 @@ const BurgerMenu = ({ locale }: { locale: Locale }) => {
         />
       </button>
 
-      {/* Menu Overlay */}
-      <div className={`${open ? "fixed inset-0 z-10 h-[100vh]" : ""}`}>
+      {/* Menu Overlay (Always in DOM) */}
+      <div
+        className={`fixed inset-0 z-[999] bg-black/50 backdrop-blur-sm transition-opacity duration-500 ${
+          open ? "opacity-100 visible" : "opacity-0 invisible"
+        }`}
+        onClick={() => setOpen(false)} // Clicking outside closes menu
+      >
+        {/* Menu Panel */}
         <div
-          className={`transition-transform duration-500 bg-white w-[100vw] h-full fixed right-0 top-0 p-[16px] flex flex-col justify-between shadow-xl ${
-            open ? "-translate-x-0" : "translate-x-full"
+          className={`transition-transform duration-500 bg-white w-[100vw] h-full fixed right-0 top-0 p-[16px] flex flex-col justify-between ${
+            open ? "translate-x-0" : "translate-x-full"
           }`}
+          onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside menu
         >
           {/* Close Button */}
           <div className="flex justify-end mb-[30px]">

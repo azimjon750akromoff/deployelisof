@@ -53,7 +53,6 @@ const ReviewCard = ({ img, name, body, rating }:any) => {
     </figure>
   );
 };
-
 export function MarqueeDemo({ offset }: any) {
   return (
     <div className="relative w-full overflow-hidden">
@@ -63,6 +62,7 @@ export function MarqueeDemo({ offset }: any) {
           transform: `translateX(${offset}px)`,
           position: 'relative',  // Ensuring it's positioned correctly
           zIndex: 10,  // Set z-index directly to ensure it stays in front
+          minWidth: 'calc(100% + 30px)', // Ensures content doesn’t overflow on mobile
         }}
       >
         {reviews.map((review, index) => (

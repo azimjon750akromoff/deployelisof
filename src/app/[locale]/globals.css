@@ -6,7 +6,7 @@
   max-width: 1170px;
   margin-right: auto;
   margin-left: auto;
-  /* border: 1px solid red; */
+  border: 1px solid red;
   padding-top: 20px;
   width: 100%;
   padding-right: 20px;
@@ -19,7 +19,7 @@
   padding-top: 20px;
   padding-right: 20px;
   padding-left: 20px;
-  /* border: 1px solid red; */
+  border: 1px solid red;
 }
 
 .bg-uzor {
@@ -63,17 +63,17 @@
 }
 
 .swiper_wrapper {
-  /* border: 1px solid red; */
+  border: 1px solid red;
 }
 
 .test {
-  /* border: 1px solid red; */
+  border: 1px solid red;
   display: flex;
   justify-content: end;
 }
 
 .test_wrapper {
-  /* border: 1px solid blue; */
+  border: 1px solid blue;
   max-width: 100%;
   width: 100%;
   background-size: cover;

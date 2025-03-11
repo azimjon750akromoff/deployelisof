@@ -8,7 +8,7 @@ const ContactForm = () => {
   const b = useTranslations("Buttons");
   const f = useTranslations("Form");
   const [formData, setFormData] = useState({
-    firstAndSecondName: "",
+    fullName: "", 
     lastName: "",
     email: "",
     phoneNumber: "",
@@ -37,11 +37,11 @@ const ContactForm = () => {
           <div className="relative">
             <input
               type="text"
-              name="firstAndSecondName"
-              value={formData.firstAndSecondName}
+              name="fullName" 
+              value={formData.fullName}
               onChange={handleChange}
-              placeholder="First and Second name"
-              className="text-[#272727] disabled-input w-full border border-[#CFD3D4] rounded-[8px] py-3 px-4 text-base md:text-[16px] font-normal leading-normal"
+              placeholder={f('name')}
+              className="text-[#272727]  w-full border border-[#CFD3D4] rounded-[8px] py-3 px-4 text-base md:text-[16px] font-normal leading-normal"
             />
           </div>
 
@@ -52,7 +52,7 @@ const ContactForm = () => {
               value={formData.lastName}
               onChange={handleChange}
               placeholder={f("lname")}
-              className="text-[#272727] disabled-input w-full border border-[#CFD3D4] rounded-[8px] py-3 px-4 text-base md:text-[16px] font-normal leading-normal"
+              className="text-[#272727]  w-full border border-[#CFD3D4] rounded-[8px] py-3 px-4 text-base md:text-[16px] font-normal leading-normal"
             />
           </div>
 
@@ -63,7 +63,7 @@ const ContactForm = () => {
               value={formData.email}
               onChange={handleChange}
               placeholder={f("email")}
-              className="text-[#272727] disabled-input w-full border border-[#CFD3D4] rounded-[8px] py-3 px-4 text-base md:text-[16px] font-normal leading-normal"
+              className="text-[#272727]  w-full border border-[#CFD3D4] rounded-[8px] py-3 px-4 text-base md:text-[16px] font-normal leading-normal"
             />
           </div>
 
@@ -84,7 +84,7 @@ const ContactForm = () => {
               onChange={handleChange}
               placeholder={f("descript")}
               rows={4}
-              className="text-[#272727] disabled-input w-full border border-[#CFD3D4] rounded-[8px] py-3 px-4 text-base md:text-[16px] font-normal leading-normal resize-none"
+              className="text-[#272727] w-full border border-[#CFD3D4] rounded-[8px] py-3 px-4 text-base md:text-[16px] font-normal leading-normal resize-none"
             />
           </div>
         </div>

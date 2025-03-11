@@ -17,6 +17,7 @@ const StarRating = ({
   rating,
   setRating,
 }: StarRatingProps) => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [hover, setHover] = useState<null | number>(null);
   const [animate, setAnimate] = useState(true);
 

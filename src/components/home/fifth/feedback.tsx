@@ -15,7 +15,7 @@ function Feedback() {
   // Dynamically update card width based on screen size
   useEffect(() => {
     const updateCardWidth = () => {
-      setCardWidth(window.innerWidth < 768 ? 320 : 570);
+      setCardWidth(window.innerWidth < 768 ? 200 : 570);
     };
 
     updateCardWidth(); // Set initial value
@@ -39,7 +39,7 @@ function Feedback() {
         {/* Top Section - Heading and Buttons */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="text-center md:text-left">
-            <h2 className="font-federo text-2xl md:text-[42px] font-normal leading-[56px]">
+            <h2 className="font-federo text-2xl md:text-[42px] font-normal leading-[56px] pb-[10px]">
               {f("feedback")}
             </h2>
             <p className="font-gilroy text-base md:text-[26px] font-normal text-[#133240]">

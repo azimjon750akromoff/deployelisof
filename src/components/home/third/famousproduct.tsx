@@ -30,7 +30,7 @@ function FamousProduct() {
 
   return (
     <section className="pt-[30px] md:pt-[60px] ">
-      <div className="test_wrapper  flex flex-col md:flex-row items-center justify-center gap-6 md:gap-[80px] bg-[url('/imgs/background.png')] bg-no-repeat bg-cover max-w-[100%] w-full h-auto md:h-[594px] p-6 md:p-[35px_48px] rounded-[20px] md:rounded-[377px_0px_0px_377px] shadow-lg mx-auto">
+      <div className="test_wrapper flex flex-col md:flex-row items-center justify-center gap-6 md:gap-[80px] bg-[url('/imgs/background.png')] bg-no-repeat bg-cover max-w-[100%] w-full h-auto md:h-[594px] p-6 md:p-[35px_48px] rounded-[20px] md:rounded-[377px_0px_0px_377px] shadow-lg mx-auto">
         {/* Image Container */}
         <div className="w-[200px] h-[200px] md:w-[543px] md:h-[523px] flex items-center justify-center rounded-full bg-white shadow-lg">
           <Image
@@ -56,7 +56,7 @@ function FamousProduct() {
             Curabitur fringilla arcu varius.
           </p>
           <MyButton />
-          <div className="flex gap-4 md:gap-[20px] mt-4 md:mt-[30px] justify-center md:justify-start mx-auto md:mx-0">
+          <div className="flex gap-4 md:gap-[15px] pt-4 md:pt-[30px] justify-center md:justify-start mx-auto md:mx-0">
             {miniShirtImages.map((img, index) => (
               <MiniShirts
                 key={index}

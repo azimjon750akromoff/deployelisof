@@ -29,30 +29,31 @@ const reviews = [
   },
 ];
 
-const ReviewCard = ({ img, name, body, rating }:any) => {
+const ReviewCard = ({ img, name, body, rating }: any) => {
   return (
-    <figure className="relative h-[386px] w-[300px] md:w-[550px] rounded-[5px] border p-4 md:p-8 flex-shrink-0">
+    <figure className="relative h-[250px] w-[200px] md:h-[386px] md:w-[550px] rounded-[5px] border p-4 md:p-8 flex-shrink-0">
       <div className="flex justify-between">
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-2 md:gap-4">
           <Image
             width="60"
             height="60"
             alt=""
             src={img}
-            className="w-[60px] h-[60px] md:w-[80px] md:h-[80px]"
+            className="w-[40px] h-[40px] md:w-[80px] md:h-[80px]"
           />
-          <figcaption className="text-xl md:text-[29px] font-gilroy font-semibold text-[#133240] w-full md:w-[229px] dark:text-white">
+          <figcaption className="text-lg md:text-[29px] font-gilroy font-semibold text-[#133240] w-full md:w-[229px] dark:text-white">
             {name}
           </figcaption>
         </div>
         <StarRating type="button" rating={rating} size={20} />
       </div>
-      <blockquote className="mt-2 font-gilroy text-base md:text-[21px] w-full md:w-[484px] font-normal leading-normal tracking-[0.428px]">
+      <blockquote className="mt-2 font-gilroy text-sm md:text-[21px] w-full md:w-[484px] font-normal leading-normal tracking-[0.428px]">
         {body}
       </blockquote>
     </figure>
   );
 };
+
 export function MarqueeDemo({ offset }: any) {
   return (
     <div className="relative w-full overflow-hidden">
@@ -60,9 +61,9 @@ export function MarqueeDemo({ offset }: any) {
         className="flex gap-4 md:gap-[30px] transition-transform duration-300 ease-in-out"
         style={{
           transform: `translateX(${offset}px)`,
-          position: 'relative',  // Ensuring it's positioned correctly
-          zIndex: 10,  // Set z-index directly to ensure it stays in front
-          minWidth: 'calc(100% + 30px)', // Ensures content doesn’t overflow on mobile
+          position: "relative", // Ensuring it's positioned correctly
+          zIndex: 10, // Set z-index directly to ensure it stays in front
+          minWidth: "calc(100% + 30px)", // Ensures content doesn’t overflow on mobile
         }}
       >
         {reviews.map((review, index) => (
@@ -71,4 +72,4 @@ export function MarqueeDemo({ offset }: any) {
       </div>
     </div>
   );
-}
+};

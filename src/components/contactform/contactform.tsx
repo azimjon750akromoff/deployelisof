@@ -29,7 +29,7 @@ const ContactForm = () => {
   };
 
   return (
-    <div className="flex justify-center mt-8 md:mt-[92px] font-gilroy">
+    <div className="flex justify-center pt-8 md:pt-[92px] font-gilroy">
       <form onSubmit={handleSubmit} className="space-y-6 w-full max-w-[420px]">
         <div className="space-y-4">
           {/* First and Second Name */}
@@ -81,7 +81,7 @@ const ContactForm = () => {
           <div className="flex flex-col md:flex-row gap-2 md:gap-[6px] items-center">
             <div className="relative w-full md:w-[100px]">
               <select className="text-[#272727] w-full h-[50px] py-3 px-4 text-base md:text-[16px] rounded-[8px] font-normal border border-[#CFD3D4] leading-normal">
-                <option value="🇳🇬+234">+234</option>
+                <option value="🇺🇿+998">998</option>
               </select>
             </div>
 

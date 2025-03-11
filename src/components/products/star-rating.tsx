@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils/cn";
-import React, {  useState } from "react";
+import React, { useState } from "react";
 
 type StarRatingProps = {
   type: "static" | "button";
@@ -11,15 +11,13 @@ type StarRatingProps = {
   setRating?: (value: number) => void;
 };
 
-
 const StarRating = ({
   type,
   wrapperClassName,
   rating,
   setRating,
 }: StarRatingProps) => {
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const [hover, setHover] = useState<null | number>(null);
+  const [hover, setHover] = useState<null | number>(null);
   const [animate, setAnimate] = useState(true);
 
   setTimeout(() => {
@@ -39,7 +37,7 @@ const [hover, setHover] = useState<null | number>(null);
           <button
             type="button"
             key={index}
-            className={`transition-color duration-600 ease-in-out w-[18px] h-[18px] ${
+            className={`transition-color duration-600 ease-in-out w-[12px] h-[12px] md:w-[18px] md:h-[18px] ${
               index <= (rating || 5)
                 ? "text-[#F8A401]"
                 : type === "static"
@@ -48,7 +46,7 @@ const [hover, setHover] = useState<null | number>(null);
             } ${
               type === "static"
                 ? "cursor-default"
-                : "flex w-[24px] h-[24px] items-center justify-center rounded-full"
+                : "flex w-[16px] h-[16px] md:w-[24px] md:h-[24px] items-center justify-center rounded-full"
             } ${type === "button" && animate ? "animate-pulse" : ""}`}
             onClick={type === "button" ? () => setRating?.(index) : () => {}}
             onMouseEnter={type === "button" ? () => setHover(index) : () => {}}

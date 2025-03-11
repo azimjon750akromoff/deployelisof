@@ -6,10 +6,10 @@ const MainComponent = () => {
   return (
     <div className="relative">
       {/* Grey Background Image Section */}
-      {/* <div
-        className="absolute inset-0 w-full h-[500px] bg-contain bg-right px-12 z-0 hidden md:block"
-        style={{ backgroundImage: "url('/imgs/grey.png')", position: "fixed", top: 0, left: 0, zIndex: -1 }}
-      ></div> */}
+      <div
+  className="absolute inset-[340px] w-[80%] h-[500px] bg-contain px-12 z-0 hidden md:block"
+  style={{ backgroundImage: "url('/imgs/grey.png')", backgroundPosition: "70% center",marginLeft:"13.5%"}}
+></div>
 
       {/* Hero Component */}
       <div className="relative z-10">

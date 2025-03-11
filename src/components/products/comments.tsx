@@ -5,7 +5,7 @@ import React from "react";
 const reviews = [
   {
     name: "Floyd Miles",
-    body: "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.",
+    body: "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.est sit aliqua dolor do amet sint.",
     img: "/imgs/face.png",
     rating: 3.5,
   },
@@ -17,7 +17,7 @@ const reviews = [
   },
   {
     name: "Floyd Miles",
-    body: "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.",
+    body: "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud ametest sit aliqua dolor do amet sint.",
     img: "/imgs/face.png",
     rating: 3.5,
   },
@@ -41,13 +41,13 @@ const ReviewCard = ({ img, name, body, rating }: any) => {
             src={img}
             className="w-[40px] h-[40px] md:w-[80px] md:h-[80px]"
           />
-          <figcaption className="text-lg md:text-[29px] font-gilroy font-semibold text-[#133240] w-full md:w-[229px] dark:text-white">
+          <figcaption className="text-[15px] md:text-[29px] font-gilroy font-semibold text-[#133240] w-full md:w-[229px] dark:text-white">
             {name}
           </figcaption>
         </div>
         <StarRating type="button" rating={rating} size={20} />
       </div>
-      <blockquote className="mt-2 font-gilroy text-sm md:text-[21px] w-full md:w-[484px] font-normal leading-normal tracking-[0.428px]">
+      <blockquote className="pt-1 font-gilroy text-[12px] md:text-[21px] w-full md:w-[484px] font-normal leading-normal tracking-[0.428px]">
         {body}
       </blockquote>
     </figure>
@@ -73,3 +73,4 @@ export function MarqueeDemo({ offset }: any) {
     </div>
   );
 };
+

@@ -4,6 +4,7 @@ import { MarqueeDemo } from "@/components/products/comments";
 import { useTranslations } from "next-intl";
 import React, { useState, useEffect } from "react";
 
+
 function Feedback() {
   const f = useTranslations("Feedback");
   const b = useTranslations("Buttons");

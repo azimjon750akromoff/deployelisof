@@ -178,3 +178,8 @@ html {
     gap: 40px;
   }
 }
+
+
+  .disabled-input {
+    pointer-events: auto;
+  }

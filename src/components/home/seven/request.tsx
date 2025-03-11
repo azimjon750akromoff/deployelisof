@@ -2,6 +2,7 @@ import ContactForm from "@/components/contactform/contactform";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import React from "react";
+import "react-phone-input-2/lib/style.css";
 
 function Request() {
   const r = useTranslations("Request");

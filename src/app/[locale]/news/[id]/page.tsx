@@ -35,21 +35,22 @@ const newsItems: NewsItem[] = [
 ];
 
 // ✅ Function to fetch a news item by ID
-async function getNewsItem(id: string | undefined): Promise<NewsItem | null> {
+async function getNewsItem(id?: string): Promise<NewsItem | null> {
   if (!id) return null;
   return newsItems.find((item) => item.id === id) || null;
 }
+
 // ✅ Generate static paths for dynamic routes (SSG)
 export async function generateStaticParams() {
   return newsItems.map((news) => ({ id: news.id }));
 }
 
 // ✅ Server Component (fixed type issue)
-export default async function NewsDetailPage({
-  params,
-}: {
-  params: { id: string };
-}) {
+interface NewsDetailPageProps {
+  params: { id?: string }; // Make `id` optional
+}
+
+export default async function NewsDetailPage({ params }: NewsDetailPageProps) {
   if (!params?.id) {
     return notFound();
   }

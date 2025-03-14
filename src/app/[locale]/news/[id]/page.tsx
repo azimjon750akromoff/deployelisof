@@ -56,8 +56,7 @@ interface PageProps {
   };
 }
 
-// ✅ Use `PageProps` explicitly in the function signature
-export default async function NewsDetailPage({ params }: PageProps) {
+export default async function NewsDetailPage({ params }: { params: { locale?: string; id: string } }) {
   const { id } = params;
 
   if (!id) {

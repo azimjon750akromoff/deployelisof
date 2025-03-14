@@ -1,7 +1,6 @@
-// @ts-nocheck
-/* eslint-disable */
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
+
 interface NewsItem {
   id: string;
   title: string;
@@ -49,16 +48,17 @@ export async function generateStaticParams() {
   }));
 }
 
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-interface NewsDetailPageProps {
+// ✅ Fix the type error by properly defining PageProps
+interface PageProps {
   params: {
-    locale: string;
+    locale?: string; // Optional in case it's not always provided
     id: string;
   };
 }
-export default async function NewsDetailPage({ params }: { params: { locale: string; id: string } }) {
-  const { id } = params; // ✅ Matches the structure from `generateStaticParams()`
+
+// ✅ Use `PageProps` explicitly in the function signature
+export default async function NewsDetailPage({ params }: PageProps) {
+  const { id } = params;
 
   if (!id) {
     return notFound();

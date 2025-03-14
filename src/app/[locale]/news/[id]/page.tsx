@@ -50,16 +50,12 @@ export async function generateStaticParams() {
   }));
 }
 
-// ✅ Define the correct PageProps interface
-interface PageProps {
-  params: {
-    locale?: string;
-    id: string;
-  };
-}
-
-// ✅ Explicitly use PageProps in the function definition
-export default async function NewsDetailPage({ params }: PageProps) {
+// ✅ Use Next.js's auto-generated type
+export default async function NewsDetailPage({
+  params,
+}: {
+  params: { locale?: string; id: string };
+}) {
   const { id } = params;
 
   if (!id) {

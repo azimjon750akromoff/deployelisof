@@ -1,4 +1,3 @@
-import { Metadata } from 'next';
 import React from 'react';
 import Image from 'next/image';
 
@@ -10,10 +9,6 @@ interface NewsItem {
   image: string;
 }
 
-interface Params {
-  locale: string;
-  id: string;
-}
 
 // Function to fetch news details by ID
 async function getNewsItem(id: string): Promise<NewsItem> {

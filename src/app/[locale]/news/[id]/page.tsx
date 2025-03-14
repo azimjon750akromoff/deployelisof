@@ -57,7 +57,7 @@ interface NewsDetailPageProps {
 }
 
 export default async function NewsDetailPage({ params }: { params: { id: string } }) {
-  const { id } = params; // ✅ No ESLint warning
+  const { id } = params; // ✅ No unused variable warning
 
   if (!id) {
     return notFound();

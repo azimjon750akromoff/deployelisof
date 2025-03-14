@@ -9,6 +9,10 @@ interface NewsItem {
   image: string;
 }
 
+interface Params {
+  locale: string;
+  id: string;
+}
 
 // Function to fetch news details by ID
 async function getNewsItem(id: string): Promise<NewsItem> {
@@ -44,13 +48,14 @@ async function getNewsItem(id: string): Promise<NewsItem> {
   return newsItem;
 }
 
-// Correct the function signature
+// Correct the function signature and use `Params` properly
 export default async function NewsDetailPage({
   params,
 }: {
-  params: { locale: string; id: string };
+  params: Params; // Use the `Params` interface here
 }) {
-  const newsItem = await getNewsItem(params.id);
+  const { id } = params; // Destructure `id` from `params`
+  const newsItem = await getNewsItem(id);
 
   return (
     <div className="p-8 max-w-4xl mx-auto">
@@ -61,6 +66,7 @@ export default async function NewsDetailPage({
         width={800}
         height={450}
         className="rounded-lg mb-6"
+        priority // Add priority if this image is above the fold
       />
       <p className="text-lg text-gray-700 mb-6">{newsItem.content}</p>
       <p className="text-sm text-gray-500">Published on: {newsItem.date}</p>

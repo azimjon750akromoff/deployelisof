@@ -9,11 +9,6 @@ interface NewsItem {
   image: string;
 }
 
-interface Params {
-  locale: string;
-  id: string;
-}
-
 // Function to fetch news details by ID
 async function getNewsItem(id: string): Promise<NewsItem> {
   const newsItems: NewsItem[] = [
@@ -48,11 +43,11 @@ async function getNewsItem(id: string): Promise<NewsItem> {
   return newsItem;
 }
 
-// Correct the function signature and use `Params` properly
+// Correct the function signature and use the correct type for `params`
 export default async function NewsDetailPage({
   params,
 }: {
-  params: Params; // Use the `Params` interface here
+  params: { id: string }; // Use the correct type for `params`
 }) {
   const { id } = params; // Destructure `id` from `params`
   const newsItem = await getNewsItem(id);

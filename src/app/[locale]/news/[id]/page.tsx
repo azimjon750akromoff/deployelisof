@@ -43,28 +43,36 @@ async function getNewsItem(id: string): Promise<NewsItem> {
   return newsItem;
 }
 
-// Correct the function signature and use the correct type for `params`
+// ✅ Correcting the function signature
 export default async function NewsDetailPage({
   params,
 }: {
-  params: { id: string }; // Use the correct type for `params`
+  params: { id: string }; 
 }) {
-  const { id } = params; // Destructure `id` from `params`
-  const newsItem = await getNewsItem(id);
+  // Ensure `params.id` is available
+  if (!params || !params.id) {
+    return <p className="text-red-500">Invalid News ID</p>;
+  }
 
-  return (
-    <div className="p-8 max-w-4xl mx-auto">
-      <h1 className="text-3xl font-bold mb-6 text-[#0F1E3D]">{newsItem.title}</h1>
-      <Image
-        src={newsItem.image}
-        alt={newsItem.title}
-        width={800}
-        height={450}
-        className="rounded-lg mb-6"
-        priority // Add priority if this image is above the fold
-      />
-      <p className="text-lg text-gray-700 mb-6">{newsItem.content}</p>
-      <p className="text-sm text-gray-500">Published on: {newsItem.date}</p>
-    </div>
-  );
+  try {
+    const newsItem = await getNewsItem(params.id);
+
+    return (
+      <div className="p-8 max-w-4xl mx-auto">
+        <h1 className="text-3xl font-bold mb-6 text-[#0F1E3D]">{newsItem.title}</h1>
+        <Image
+          src={newsItem.image}
+          alt={newsItem.title}
+          width={800}
+          height={450}
+          className="rounded-lg mb-6"
+          priority
+        />
+        <p className="text-lg text-gray-700 mb-6">{newsItem.content}</p>
+        <p className="text-sm text-gray-500">Published on: {newsItem.date}</p>
+      </div>
+    );
+  } catch (error) {
+    return <p className="text-red-500">News item not found</p>;
+  }
 }

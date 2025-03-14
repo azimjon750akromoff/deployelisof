@@ -9,13 +9,12 @@ interface NewsItem {
   image: string;
 }
 
-// Static News Data (Mock Database)
+// ✅ Mock database
 const newsItems: NewsItem[] = [
   {
     id: '1',
     title: 'С 1 мая будут введены социальные нормы и изменены тарифы на электроэнергию и природный газ',
-    content:
-      'Согласно постановлению, определены новые цены на топливно-энергетические ресурсы, которые поэтапно будут меняться в ...',
+    content: 'Согласно постановлению, определены новые цены на топливно-энергетические ресурсы...',
     date: 'Jan 16, 2025',
     image: '/imgs/gaz.png',
   },
@@ -35,30 +34,28 @@ const newsItems: NewsItem[] = [
   },
 ];
 
-// Function to fetch a news item by ID
-function getNewsItem(id: string): NewsItem | null {
+// ✅ Function to fetch a news item by ID
+async function getNewsItem(id: string | undefined): Promise<NewsItem | null> {
+  if (!id) return null;
   return newsItems.find((item) => item.id === id) || null;
 }
 
-// Generate static params for dynamic routes
+// ✅ Generate static paths for dynamic routes (SSG)
 export async function generateStaticParams() {
-  return newsItems.map((news) => ({
-    id: news.id,
-  }));
+  return newsItems.map((news) => ({ id: news.id }));
 }
 
-// ✅ Server Component (Correctly handles params)
-export default function NewsDetailPage({
+// ✅ Server Component (fixed type issue)
+export default async function NewsDetailPage({
   params,
 }: {
-  params: { id?: string }; // ✅ Allow optional `id`
+  params: { id: string };
 }) {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   if (!params?.id) {
     return notFound();
   }
 
-  const newsItem = getNewsItem(params.id);
+  const newsItem = await getNewsItem(params.id);
   if (!newsItem) {
     return notFound();
   }

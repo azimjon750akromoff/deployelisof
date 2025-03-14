@@ -56,10 +56,8 @@ interface NewsDetailPageProps {
     id: string;
   };
 }
-
-
-export default async function NewsDetailPage({ params }: { params: { id: string } }) {
-  const { id } = params; // ✅ No unused variable warning
+export default async function NewsDetailPage({ params }: { params: { locale: string; id: string } }) {
+  const { id } = params; // ✅ Matches the structure from `generateStaticParams()`
 
   if (!id) {
     return notFound();

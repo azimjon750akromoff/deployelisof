@@ -48,13 +48,15 @@ export async function generateStaticParams() {
   }));
 }
 
-// Define props for the page component
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 interface NewsDetailPageProps {
   params: {
     locale: string;
     id: string;
   };
 }
+
 
 export default async function NewsDetailPage({ params }: { params: { id: string } }) {
   const { id } = params; // ✅ No unused variable warning

@@ -50,15 +50,16 @@ export async function generateStaticParams() {
   }));
 }
 
-// ✅ Fix the type error by properly defining PageProps
+// ✅ Define the correct PageProps interface
 interface PageProps {
   params: {
-    locale?: string; // Optional in case it's not always provided
+    locale?: string;
     id: string;
   };
 }
 
-export default async function NewsDetailPage({ params }: { params: { locale?: string; id: string } }) {
+// ✅ Explicitly use PageProps in the function definition
+export default async function NewsDetailPage({ params }: PageProps) {
   const { id } = params;
 
   if (!id) {

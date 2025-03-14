@@ -43,8 +43,7 @@ async function getNewsItem(id: string): Promise<NewsItem> {
   return newsItem;
 }
 
-// @ts-ignore
-// eslint-disable-next-line
+// @ts-expect-error - Suppress TypeScript error about `params` type
 export default async function NewsDetailPage({
   params,
 }: {
@@ -78,4 +77,5 @@ export default async function NewsDetailPage({
     return <p className="text-red-500">News item not found</p>;
   }
 }
+
 

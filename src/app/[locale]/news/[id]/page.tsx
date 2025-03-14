@@ -46,6 +46,7 @@ async function getNewsItem(id: string | undefined): Promise<NewsItem | null> {
 // Generate static paths for dynamic routes (SSG)
 export async function generateStaticParams() {
   return newsItems.map((news) => ({
+    locale: 'en', // Ensure locales are included if needed
     id: news.id,
   }));
 }
@@ -53,14 +54,14 @@ export async function generateStaticParams() {
 // ✅ Fix: Ensure correct `PageProps` typing
 interface PageProps {
   params: {
+    locale: string; // Locale is required
     id: string;
-    locale?: string; // If locale is optional, include it
   };
 }
 
 // ✅ Use `PageProps` in function signature
 export default async function NewsDetailPage({ params }: PageProps) {
-  const { id } = params;
+  const { id, locale } = params;
 
   if (!id) {
     return notFound();

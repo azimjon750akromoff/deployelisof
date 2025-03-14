@@ -58,7 +58,8 @@ interface NewsDetailPageProps {
 
 // Server Component
 export default async function NewsDetailPage({ params }: NewsDetailPageProps) {
-  const { locale, id } = params;
+
+  const { id, locale: _locale } = params; 
 
   if (!id) {
     return notFound();

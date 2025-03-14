@@ -42,23 +42,29 @@ async function getNewsItem(id: string | undefined): Promise<NewsItem | null> {
 
 // Generate static paths for dynamic routes (SSG)
 export async function generateStaticParams() {
-  return newsItems.map((news) => ({ id: news.id }));
+  return newsItems.map((news) => ({
+    locale: 'en', // Replace with supported locales if needed
+    id: news.id,
+  }));
 }
 
 // Define props for the page component
 interface NewsDetailPageProps {
   params: {
-    id?: string;
+    locale: string;
+    id: string;
   };
 }
 
 // Server Component
 export default async function NewsDetailPage({ params }: NewsDetailPageProps) {
-  if (!params?.id) {
+  const { locale, id } = params;
+
+  if (!id) {
     return notFound();
   }
 
-  const newsItem = await getNewsItem(params.id);
+  const newsItem = await getNewsItem(id);
   if (!newsItem) {
     return notFound();
   }

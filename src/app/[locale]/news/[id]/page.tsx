@@ -71,7 +71,10 @@ export default async function NewsDetailPage({
         <p className="text-sm text-gray-500">Published on: {newsItem.date}</p>
       </div>
     );
-  } catch {
+  } 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  catch (error) {
     return <p className="text-red-500">News item not found</p>;
   }
+  
 }

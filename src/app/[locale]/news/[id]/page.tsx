@@ -1,4 +1,6 @@
 /* eslint-disable */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
 
 import { notFound } from 'next/navigation';
 import Image from 'next/image';

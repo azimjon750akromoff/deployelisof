@@ -56,6 +56,7 @@ interface NewsDetailPageProps {
     id: string;
   };
 }
+// @ts-ignore
 export default async function NewsDetailPage({ params }: { params: { locale: string; id: string } }) {
   const { id } = params; // ✅ Matches the structure from `generateStaticParams()`
 

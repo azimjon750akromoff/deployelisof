@@ -1,4 +1,3 @@
-import React from 'react';
 import Image from 'next/image';
 
 interface NewsItem {
@@ -10,7 +9,7 @@ interface NewsItem {
 }
 
 // Function to fetch news details by ID
-async function getNewsItem(id: string): Promise<NewsItem> {
+function getNewsItem(id: string): NewsItem | null {
   const newsItems: NewsItem[] = [
     {
       id: '1',
@@ -36,46 +35,32 @@ async function getNewsItem(id: string): Promise<NewsItem> {
     },
   ];
 
-  const newsItem = newsItems.find((item) => item.id === id);
-  if (!newsItem) {
-    throw new Error('News item not found');
-  }
-  return newsItem;
+  return newsItems.find((item) => item.id === id) || null;
 }
 
-// @ts-expect-error - Suppress TypeScript error about `params` type
-export default async function NewsDetailPage({
-  params,
-}: {
-  params: { id: string };
-}) {
-  if (!params || !params.id) {
+export default function NewsDetailPage({ params }: { params: { id?: string } }) {
+  if (!params?.id) {
     return <p className="text-red-500">Invalid News ID</p>;
   }
 
-  try {
-    const newsItem = await getNewsItem(params.id);
-
-    return (
-      <div className="p-8 max-w-4xl mx-auto">
-        <h1 className="text-3xl font-bold mb-6 text-[#0F1E3D]">{newsItem.title}</h1>
-        <Image
-          src={newsItem.image}
-          alt={newsItem.title}
-          width={800}
-          height={450}
-          className="rounded-lg mb-6"
-          priority
-        />
-        <p className="text-lg text-gray-700 mb-6">{newsItem.content}</p>
-        <p className="text-sm text-gray-500">Published on: {newsItem.date}</p>
-      </div>
-    );
-  } 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  catch (error) {
+  const newsItem = getNewsItem(params.id);
+  if (!newsItem) {
     return <p className="text-red-500">News item not found</p>;
   }
+
+  return (
+    <div className="p-8 max-w-4xl mx-auto">
+      <h1 className="text-2xl font-bold mb-6 text-[#0F1E3D]">{newsItem.title}</h1>
+      <Image
+        src={newsItem.image}
+        alt={newsItem.title}
+        width={800}
+        height={450}
+        className="rounded-lg mb-6"
+        priority
+      />
+      <p className="text-lg text-gray-700 mb-6">{newsItem.content}</p>
+      <p className="text-sm text-gray-500">Published on: {newsItem.date}</p>
+    </div>
+  );
 }
-
-

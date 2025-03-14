@@ -1,4 +1,4 @@
-// app/[locale]/news/[id]/page.tsx
+import { Metadata } from 'next';
 import React from 'react';
 import Image from 'next/image';
 
@@ -15,9 +15,8 @@ interface Params {
   id: string;
 }
 
-// Mock function to fetch news details by ID
+// Function to fetch news details by ID
 async function getNewsItem(id: string): Promise<NewsItem> {
-  // Replace this with your actual data fetching logic (e.g., API call or database query)
   const newsItems: NewsItem[] = [
     {
       id: '1',
@@ -50,10 +49,11 @@ async function getNewsItem(id: string): Promise<NewsItem> {
   return newsItem;
 }
 
+// Correct the function signature
 export default async function NewsDetailPage({
   params,
 }: {
-  params: Params;
+  params: { locale: string; id: string };
 }) {
   const newsItem = await getNewsItem(params.id);
 

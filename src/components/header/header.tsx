@@ -6,6 +6,7 @@ import { Locale } from "../../../i18n.config";
 import BurgerMenu from "./burger-menu";
 import ResponsiveLogo from "../responsivelogo/responsiveLogo";
 import { useRouter } from "next/navigation"; // ✅ Import useRouter
+import Link from "next/link";
 
 const Navbar = ({ locale }: { locale: Locale }) => {
   const t = useTranslations("Header.Nav");
@@ -47,7 +48,7 @@ const Navbar = ({ locale }: { locale: Locale }) => {
           return (
             <li className="font-gilroy text-[16px] font-medium" key={index}>
               {item === "Home" ? (
-                <a
+                <Link
                   href="/"
                   onClick={(e) => {
                     e.preventDefault();
@@ -56,15 +57,15 @@ const Navbar = ({ locale }: { locale: Locale }) => {
                   className="cursor-pointer hover:text-accentColor"
                 >
                   {t(`${item}.name`)}
-                </a>
+                </Link>
               ) : (
-                <a
+                <Link
                   href={sectionId}
                   onClick={(e) => handleScroll(e, sectionId)}
                   className="cursor-pointer hover:text-accentColor"
                 >
                   {t(`${item}.name`)}
-                </a>
+                </Link>
               )}
             </li>
           );

@@ -47,9 +47,8 @@ async function getNewsItem(id: string): Promise<NewsItem> {
 export default async function NewsDetailPage({
   params,
 }: {
-  params: { id: string }; 
+  params: { id: string };
 }) {
-  // Ensure `params.id` is available
   if (!params || !params.id) {
     return <p className="text-red-500">Invalid News ID</p>;
   }
@@ -72,7 +71,7 @@ export default async function NewsDetailPage({
         <p className="text-sm text-gray-500">Published on: {newsItem.date}</p>
       </div>
     );
-  } catch (error) {
+  } catch {
     return <p className="text-red-500">News item not found</p>;
   }
 }

@@ -48,7 +48,12 @@ export async function generateStaticParams() {
 }
 
 // ✅ Server Component (Correctly handles params)
-export default function NewsDetailPage({ params }: { params: { id: string } }) {
+export default function NewsDetailPage({
+  params,
+}: {
+  params: { id?: string }; // ✅ Allow optional `id`
+}) {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   if (!params?.id) {
     return notFound();
   }

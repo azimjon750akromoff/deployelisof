@@ -56,10 +56,8 @@ interface NewsDetailPageProps {
   };
 }
 
-// Server Component
-export default async function NewsDetailPage({ params }: NewsDetailPageProps) {
-
-  const { id, locale: _locale } = params; 
+export default async function NewsDetailPage({ params }: { params: { id: string } }) {
+  const { id } = params; // ✅ No ESLint warning
 
   if (!id) {
     return notFound();

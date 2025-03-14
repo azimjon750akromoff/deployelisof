@@ -1,7 +1,7 @@
 {
   "Header": {
     "Nav": {
-      "Home": { "name": "Bosh sahifa", "link": "#home" },
+      "Home": { "name": "Bosh sahifa","link": "/"},
       "Products": { "name": "Mahsulotlar", "link": "#products" },
       "AboutUs": { "name": "Biz haqimizda", "link": "#about" },
       "OurClients": { "name": "Mijozlarimiz", "link": "#clients" },
@@ -33,7 +33,19 @@
     "lname": "Familiya",
     "email": "Elektron pochta",
     "number": "Telefon raqami",
-    "descript": "Tavsif"
+    "descript": "Tavsif",
+    "errors": {
+      "name": "Ism kamida 3 ta belgi bo'lishi kerak",
+      "name_max": "Ism 50 belgidan oshmasligi kerak",
+      "lname": "Familiya kamida 3 ta belgi bo'lishi kerak",
+      "lname_max": "Familiya 50 belgidan oshmasligi kerak",
+      "email": "Elektron pochta formati noto‘g‘ri",
+      "email_max": "Elektron pochta 50 belgidan oshmasligi kerak",
+      "number": "Telefon raqam formati noto‘g‘ri",
+      "number_max": "Telefon raqam 20 belgidan oshmasligi kerak",
+      "descript": "Tavsif kamida 7 ta belgi bo‘lishi kerak",
+      "descript_max": "Tavsif 500 belgidan oshmasligi kerak"
+    }
   },
   
   "About": {

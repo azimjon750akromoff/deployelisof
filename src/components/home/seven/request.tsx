@@ -36,7 +36,7 @@ function Request() {
           </div>
 
           {/* Right Section - Contact Form */}
-          <div className="w-full md:w-[50%]">
+          <div className="w-full md:w-[50%] pt-8 md:pt-[92px]">
             <ContactForm />
           </div>
         </div>

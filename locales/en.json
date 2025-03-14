@@ -1,7 +1,7 @@
 {
   "Header": {
     "Nav": {
-      "Home": { "name": "Home", "link": "#home" },
+      "Home": { "name": "Home", "link": "/" },
       "Products": { "name": "Products", "link": "#products" },
       "AboutUs": { "name": "About us", "link": "#about" },
       "OurClients": { "name": "Our clients", "link": "#clients" },
@@ -35,7 +35,19 @@
     "lname":"Last Name",
     "email":"Email",
     "number":"Phone Number",
-    "descript":"Description"
+    "descript":"Description",
+    "errors": {
+      "name": "Name must be at least 3 characters",
+      "name_max": "Name cannot exceed 50 characters",
+      "lname": "Surname must be at least 3 characters",
+      "lname_max": "Surname cannot exceed 50 characters",
+      "email": "Invalid email format",
+      "email_max": "Email cannot exceed 50 characters",
+      "number": "Invalid phone number format",
+      "number_max": "Phone number cannot exceed 20 characters",
+      "descript": "Description must be at least 7 characters",
+      "descript_max": "Description cannot exceed 500 characters"
+    }
   },
   "About":{
     "aboutus":"About us",

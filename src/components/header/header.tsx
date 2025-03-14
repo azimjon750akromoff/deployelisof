@@ -5,9 +5,12 @@ import LangSwitcher from "./lang-switcher";
 import { Locale } from "../../../i18n.config";
 import BurgerMenu from "./burger-menu";
 import ResponsiveLogo from "../responsivelogo/responsiveLogo";
+import { useRouter } from "next/navigation"; // ✅ Import useRouter
 
 const Navbar = ({ locale }: { locale: Locale }) => {
   const t = useTranslations("Header.Nav");
+  const router = useRouter(); // ✅ Initialize Next.js Router
+
   const keysNav = [
     "Home",
     "Products",
@@ -22,10 +25,10 @@ const Navbar = ({ locale }: { locale: Locale }) => {
     e: React.MouseEvent<HTMLAnchorElement>,
     targetId: string
   ) => {
-    e.preventDefault(); // Prevent default anchor behavior
+    e.preventDefault();
     const targetElement = document.querySelector(targetId);
     if (targetElement) {
-      targetElement.scrollIntoView({ behavior: "smooth" }); // ✅ Smooth scroll
+      targetElement.scrollIntoView({ behavior: "smooth" });
     }
   };
 
@@ -39,17 +42,30 @@ const Navbar = ({ locale }: { locale: Locale }) => {
       {/* Navigation Links */}
       <ul className="flex gap-[48px] hidden md:flex">
         {keysNav.map((item, index) => {
-          const sectionId = t(`${item}.link`); // "#clients", "#about", etc.
+          const sectionId = t(`${item}.link`); // e.g., "#clients", "#about"
 
           return (
             <li className="font-gilroy text-[16px] font-medium" key={index}>
-              <a
-                href={sectionId} // ✅ This makes it work for SEO and no-JS users
-                onClick={(e) => handleScroll(e, sectionId)}
-                className="cursor-pointer hover:text-accentColor"
-              >
-                {t(`${item}.name`)}
-              </a>
+              {item === "Home" ? (
+                <a
+                  href="/"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    router.push("/"); // ✅ Redirects to main home page
+                  }}
+                  className="cursor-pointer hover:text-accentColor"
+                >
+                  {t(`${item}.name`)}
+                </a>
+              ) : (
+                <a
+                  href={sectionId}
+                  onClick={(e) => handleScroll(e, sectionId)}
+                  className="cursor-pointer hover:text-accentColor"
+                >
+                  {t(`${item}.name`)}
+                </a>
+              )}
             </li>
           );
         })}

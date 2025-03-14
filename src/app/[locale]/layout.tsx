@@ -9,16 +9,14 @@ import Footer from "@/components/footer/footer";
 
 type Props = {
   children: ReactNode;
-  params: Promise<{ locale: string }>; // params is a Promise
+  params: { locale: Locale }; // params is not a Promise
 };
 
 export default async function RootLayout({ children, params }: Props) {
-  // Await the params promise to resolve the actual values
-  const resolvedParams = await params;
-  const locale = resolvedParams.locale || "en"; // Default to "en" if undefined
+  const { locale } = params;
 
-  // Validate the locale and ensure it's of type Locale
-  if (!locales.includes(locale as Locale)) {
+  // Validate the locale
+  if (!locales.includes(locale)) {
     notFound(); // Return a 404 if the locale is invalid
   }
 
@@ -28,14 +26,15 @@ export default async function RootLayout({ children, params }: Props) {
     messages = (await import(`../../../locales/${locale}.json`)).default;
   } catch (error) {
     console.error(`Failed to load messages for locale: ${locale}`, error);
-    notFound(); // Return a 404 if the messages file is missing
+    // Provide fallback messages or return a 404
+    notFound();
   }
 
   return (
     <html lang={locale}>
       <body className="font-federo text-[16px] font-normal antialiased">
-        <NextIntlClientProvider locale={locale as Locale} messages={messages}>
-          <Navbar locale={locale as Locale} />
+        <NextIntlClientProvider locale={locale} messages={messages}>
+          <Navbar locale={locale} />
           {children}
           <Footer />
         </NextIntlClientProvider>

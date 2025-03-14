@@ -13,14 +13,14 @@ const FooterNav = () => {
           {/* Home Section */}
           <div className="flex flex-col gap-4 items-center md:items-start text-center md:text-left">
             <h3 className="text-[20px] md:text-[24px] font-sans mb-3">{t("Home.name")}</h3>
-            <ul className="space-y-2 flex flex-col gap-4 text-gray-400 text-[16px] md:text-[20px] font-sans">
+            <ul className="space-y-2 flex flex-col gap-4 text-gray-800 text-[16px] md:text-[20px] font-sans">
               <li>
-                <a href={t("AboutUs.link")} className="hover:text-primaryColor cursor-pointer">
+                <a href={t("AboutUs.link")} className="hover:text-green-700  cursor-pointer">
                   {t("AboutUs.name")}
                 </a>
               </li>
               <li>
-                <a href={t("Products.link")} className="hover:text-primaryColor cursor-pointer">
+                <a href={t("Products.link")} className="hover:text-green-700  cursor-pointer">
                   {t("Products.name")}
                 </a>
               </li>
@@ -30,14 +30,14 @@ const FooterNav = () => {
           {/* Our Clients Section */}
           <div className="flex flex-col gap-4 items-center md:items-start text-center md:text-left">
             <h3 className="text-[20px] md:text-[24px] font-sans mb-3">{t("OurClients.name")}</h3>
-            <ul className="space-y-2 flex flex-col gap-4 text-gray-400 text-[16px] md:text-[20px] font-sans">
+            <ul className="space-y-2 flex flex-col gap-4 text-gray-800 text-[16px] md:text-[20px] font-sans">
               <li>
-                <a href={t("News.link")} className="hover:text-primaryColor cursor-pointer">
+                <a href={t("News.link")} className="hover:text-green-700  cursor-pointer">
                   {t("News.name")}
                 </a>
               </li>
               <li>
-                <a href={t("ContactUs.link")} className="hover:text-primaryColor cursor-pointer">
+                <a href={t("ContactUs.link")} className="hover:text-green-700  cursor-pointer">
                   {t("ContactUs.name")}
                 </a>
               </li>
@@ -47,16 +47,16 @@ const FooterNav = () => {
           {/* Social Media Section */}
           <div className="flex flex-col gap-4 items-center md:items-start text-center md:text-left">
             <h3 className="text-[20px] md:text-[24px] font-sans mb-3">{t("FollowUs.name")}</h3>
-            <ul className="space-y-2 flex flex-col gap-4 text-gray-400 text-[16px] md:text-[20px] font-sans">
+            <ul className="space-y-2 flex flex-col gap-4 text-gray-800 text-[16px] md:text-[20px] font-sans">
               <li>
-                <a href="https://instagram.com" target="_blank" className="flex items-center gap-2 hover:text-primaryColor cursor-pointer">
-                  <FaInstagram className="text-gray-400 text-xl" />
+                <a href="https://instagram.com" target="_blank" className="flex items-center gap-2 hover:text-green-700   cursor-pointer">
+                  <FaInstagram className="text-gray-800 text-xl" />
                   Instagram
                 </a>
               </li>
               <li>
-                <a href="https://t.me" target="_blank" className="flex items-center gap-2 hover:text-primaryColor cursor-pointer">
-                  <FaTelegramPlane className="text-gray-400 text-xl" />
+                <a href="https://t.me" target="_blank" className="flex items-center gap-2 hover:text-green-700  cursor-pointer">
+                  <FaTelegramPlane className="text-gray-800 text-xl" />
                   Telegram
                 </a>
               </li>
@@ -66,9 +66,9 @@ const FooterNav = () => {
           {/* Location Section */}
           <div className="flex flex-col gap-4 items-center md:items-start text-center md:text-left">
             <h3 className="text-[20px] md:text-[24px] font-sans mb-3">{t("Location.name")}</h3>
-            <ul className="space-y-2 flex flex-col gap-4 text-gray-400 text-[16px] md:text-[20px] font-sans">
-              <li className="hover:text-primaryColor cursor-pointer">+998 99 123 45 67</li>
-              <li className="hover:text-primaryColor cursor-pointer">{t("Address.name")}</li>
+            <ul className="space-y-2 flex flex-col gap-4 text-gray-800 text-[16px] md:text-[20px] font-sans">
+              <li className="hover:text-green-700  cursor-pointer">+998 99 123 45 67</li>
+              <li className="hover:text-green-700  cursor-pointer">{t("Address.name")}</li>
             </ul>
           </div>
 

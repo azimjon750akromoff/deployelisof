@@ -16,6 +16,7 @@ const ResponsiveLogo = () => {
     return () => window.removeEventListener("resize", updateLogo); // Cleanup
   }, []);
 
+  
   return <Image src={logoSrc} width={130} height={100} alt="Logo" />;
 };
 

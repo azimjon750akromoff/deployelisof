@@ -2,8 +2,7 @@
 
 import { MarqueeDemo } from "@/components/products/comments";
 import { useTranslations } from "next-intl";
-import React, { useState, useEffect } from "react";
-
+import React, { useState, useEffect, useRef } from "react";
 
 function Feedback() {
   const f = useTranslations("Feedback");
@@ -12,6 +11,8 @@ function Feedback() {
   const totalCards = 3; // Adjust based on the total number of feedback cards
   const [offset, setOffset] = useState(0);
   const [cardWidth, setCardWidth] = useState(570); // Default width
+  const [startX, setStartX] = useState(null); // For touch events
+  const marqueeRef = useRef(null); // Reference to the marquee container
 
   // Dynamically update card width based on screen size
   useEffect(() => {
@@ -32,6 +33,31 @@ function Feedback() {
 
   const handlePrev = () => {
     setOffset((prev) => (prev + cardWidth > 0 ? maxOffset : prev + cardWidth));
+  };
+
+  // Touch event handlers for swipe functionality
+  const handleTouchStart = (e) => {
+    setStartX(e.touches[0].clientX);
+  };
+
+  const handleTouchMove = (e) => {
+    if (startX === null) return;
+
+    const currentX = e.touches[0].clientX;
+    const diff = startX - currentX;
+
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) {
+        handleNext(); // Swipe left
+      } else {
+        handlePrev(); // Swipe right
+      }
+      setStartX(null); // Reset startX after handling the swipe
+    }
+  };
+
+  const handleTouchEnd = () => {
+    setStartX(null);
   };
 
   return (
@@ -68,8 +94,14 @@ function Feedback() {
           </div>
         </div>
 
-        {/* Marquee Section */}
-        <div className="relative mt-6 md:mt-[40px] overflow-hidden">
+        {/* Marquee Section with Touch Events */}
+        <div
+          className="relative mt-6 md:mt-[40px] overflow-hidden"
+          ref={marqueeRef}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+        >
           <div className="relative z-20">
             <MarqueeDemo offset={offset} />
           </div>

@@ -39,7 +39,6 @@ async function getNewsItem(id: string | undefined): Promise<NewsItem | null> {
   if (!id) return null;
   return newsItems.find((item) => item.id === id) || null;
 }
-
 // ✅ Generate static paths for dynamic routes (SSG)
 export async function generateStaticParams() {
   return newsItems.map((news) => ({ id: news.id }));

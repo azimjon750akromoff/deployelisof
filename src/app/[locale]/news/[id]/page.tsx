@@ -1,3 +1,4 @@
+import { notFound } from 'next/navigation';
 import Image from 'next/image';
 
 interface NewsItem {
@@ -8,44 +9,53 @@ interface NewsItem {
   image: string;
 }
 
-// Function to fetch news details by ID
-function getNewsItem(id: string): NewsItem | null {
-  const newsItems: NewsItem[] = [
-    {
-      id: '1',
-      title: 'С 1 мая будут введены социальные нормы и изменены тарифы на электроэнергию и природный газ',
-      content:
-        'Согласно постановлению, определены новые цены на топливно-энергетические ресурсы, которые поэтапно будут меняться в ...',
-      date: 'Jan 16, 2025',
-      image: '/imgs/gaz.png',
-    },
-    {
-      id: '2',
-      title: 'Новости о новых технологиях в энергетике',
-      content: 'Новые технологии в энергетике позволяют снизить затраты и улучшить экологию...',
-      date: 'Jan 17, 2025',
-      image: '/imgs/gaz.png',
-    },
-    {
-      id: '3',
-      title: 'Энергетические компании внедряют инновации',
-      content: 'Энергетические компании активно внедряют инновации для повышения эффективности...',
-      date: 'Jan 18, 2025',
-      image: '/imgs/gaz.png',
-    },
-  ];
+// Static News Data (Mock Database)
+const newsItems: NewsItem[] = [
+  {
+    id: '1',
+    title: 'С 1 мая будут введены социальные нормы и изменены тарифы на электроэнергию и природный газ',
+    content:
+      'Согласно постановлению, определены новые цены на топливно-энергетические ресурсы, которые поэтапно будут меняться в ...',
+    date: 'Jan 16, 2025',
+    image: '/imgs/gaz.png',
+  },
+  {
+    id: '2',
+    title: 'Новости о новых технологиях в энергетике',
+    content: 'Новые технологии в энергетике позволяют снизить затраты и улучшить экологию...',
+    date: 'Jan 17, 2025',
+    image: '/imgs/gaz.png',
+  },
+  {
+    id: '3',
+    title: 'Энергетические компании внедряют инновации',
+    content: 'Энергетические компании активно внедряют инновации для повышения эффективности...',
+    date: 'Jan 18, 2025',
+    image: '/imgs/gaz.png',
+  },
+];
 
+// Function to fetch a news item by ID
+function getNewsItem(id: string): NewsItem | null {
   return newsItems.find((item) => item.id === id) || null;
 }
 
-export default function NewsDetailPage({ params }: { params: { id?: string } }) {
+// Generate static params for dynamic routes
+export async function generateStaticParams() {
+  return newsItems.map((news) => ({
+    id: news.id,
+  }));
+}
+
+// ✅ Server Component (Correctly handles params)
+export default function NewsDetailPage({ params }: { params: { id: string } }) {
   if (!params?.id) {
-    return <p className="text-red-500">Invalid News ID</p>;
+    return notFound();
   }
 
   const newsItem = getNewsItem(params.id);
   if (!newsItem) {
-    return <p className="text-red-500">News item not found</p>;
+    return notFound();
   }
 
   return (

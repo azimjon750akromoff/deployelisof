@@ -1,7 +1,6 @@
 /* eslint-disable */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
-
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 
@@ -47,17 +46,20 @@ async function getNewsItem(id: string | undefined): Promise<NewsItem | null> {
 // Generate static paths for dynamic routes (SSG)
 export async function generateStaticParams() {
   return newsItems.map((news) => ({
-    locale: 'en', // Replace with supported locales if needed
     id: news.id,
   }));
 }
 
-// ✅ Use Next.js's auto-generated type
-export default async function NewsDetailPage({
-  params,
-}: {
-  params: { locale?: string; id: string };
-}) {
+// ✅ Fix: Ensure correct `PageProps` typing
+interface PageProps {
+  params: {
+    id: string;
+    locale?: string; // If locale is optional, include it
+  };
+}
+
+// ✅ Use `PageProps` in function signature
+export default async function NewsDetailPage({ params }: PageProps) {
   const { id } = params;
 
   if (!id) {

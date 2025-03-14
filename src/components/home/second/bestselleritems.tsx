@@ -1,15 +1,19 @@
+'use client'
+
 import ProductGridItem from "@/components/productgrid/ProductGridItem";
 import { useTranslations } from "next-intl";
-import React from "react";
+import React, { useState } from "react";
 
 function BestSeller() {
   const w = useTranslations("BestSeller"); // Get translations
+
+  const [clickedIndex, setClickedIndex] = useState<number | null>(null);
 
   return (
     <section id="products" className="pt-[42px]">
       
       <div className="my-container flex justify-between items-center flex-col">
-        <h2 className="font-federo font-normal text-centert text-3xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl">
+        <h2 className="font-federo font-normal text-centert text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl">
           {w("bestseller")}
         </h2>
 
@@ -17,7 +21,7 @@ function BestSeller() {
           {Array(8)
             .fill(0)
             .map((_, index) => (
-              <ProductGridItem key={index} index={index} />
+              <ProductGridItem key={index} index={index} clickedIndex={clickedIndex} setClickedIndex={setClickedIndex} />
             ))}
         </div>
       </div>

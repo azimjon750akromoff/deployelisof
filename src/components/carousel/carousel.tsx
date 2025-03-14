@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import { Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
@@ -38,8 +39,9 @@ const Carousel: React.FC = () => {
   return (
     <div className="swiper_wrapper max-container">
       <Swiper
-        modules={[Navigation, Pagination]}
+        modules={[Navigation, Pagination,Autoplay]}
         spaceBetween={20}
+        autoplay={{ delay: 4000, disableOnInteraction: false }}
         slidesPerView={1}
         navigation
         loop={true}

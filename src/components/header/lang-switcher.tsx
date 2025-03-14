@@ -47,7 +47,7 @@ const LangSwitcher: React.FC<LangSwitcherProps> = ({ locale, type }) => {
 
       <ul
         className={cn(
-          "absolute left-auto right-0 top-[30px] transition-all ease-in-out bg-white flex flex-col gap-[6px] rounded-[8px] lg:text-[18px] lg:leading-[140%] text-md overflow-hidden shadow-lg z-50",
+          "absolute left-auto right-[-15px] top-[30px] transition-all ease-in-out bg-white flex flex-col gap-[6px] rounded-[8px] lg:text-[18px] lg:leading-[140%] text-md overflow-hidden shadow-lg z-50",
           {
             "h-auto max-h-[130px] px-[25px] py-[8px]": open,
             "max-h-0 px-[0px] py-[0px]": !open,
@@ -60,7 +60,7 @@ const LangSwitcher: React.FC<LangSwitcherProps> = ({ locale, type }) => {
             key={index}
             role="menuitem"
             tabIndex={0}
-            className={cn("flex items-center gap-2 uppercase pb-[5px] font-medium", {
+            className={cn("flex mr-2 ml-[-10px] items-center gap-2.5 uppercase pb-[5px] font-medium", {
               "font-bold text-accentColor border-b border-solid border-accentColor":
                 lang === item,
             })}

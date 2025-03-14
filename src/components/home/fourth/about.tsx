@@ -16,7 +16,7 @@ function About() {
   const [rightMiniImage, setRightMiniImage] = useState("/imgs/img5.png");
   const [isImageChanging, setIsImageChanging] = useState(false);
 
-  const handleImageSwap = (index:any, position:any) => {
+  const handleImageSwap = (index: any, position: any) => {
     setIsImageChanging(true);
     setTimeout(() => {
       if (position === "left") {
@@ -121,7 +121,7 @@ function About() {
               <div className="flex flex-col gap-28">
                 <div className="transform -rotate-90 translate-x-14 flex justify-end">
                   <button className="bg-primaryColor rounded-[5px] text-white py-2 px-4 font-gilroy text-lg font-medium text-center flex justify-end">
-                    {b("contactuss")}
+                    <a href="#contacts">{b("contactuss")}</a>
                   </button>
                 </div>
                 <Image

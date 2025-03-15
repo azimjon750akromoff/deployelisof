@@ -35,17 +35,16 @@ function Feedback() {
     setOffset((prev) => (prev + cardWidth > 0 ? maxOffset : prev + cardWidth));
   };
 
-  // Touch event handlers for swipe functionality
-  const handleTouchStart = (e) => {
+  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
     setStartX(e.touches[0].clientX);
   };
-
-  const handleTouchMove = (e) => {
+  
+  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
     if (startX === null) return;
-
+  
     const currentX = e.touches[0].clientX;
     const diff = startX - currentX;
-
+  
     if (Math.abs(diff) > 50) {
       if (diff > 0) {
         handleNext(); // Swipe left
@@ -55,10 +54,11 @@ function Feedback() {
       setStartX(null); // Reset startX after handling the swipe
     }
   };
-
-  const handleTouchEnd = () => {
+  
+  const handleTouchEnd = (e: React.TouchEvent<HTMLDivElement>) => {
     setStartX(null);
   };
+  
 
   return (
     <section id="clients" className="relative mt-8 md:pt-[65px]">

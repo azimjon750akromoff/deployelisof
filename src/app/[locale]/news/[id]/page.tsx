@@ -3,6 +3,7 @@
 
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
+import { setRequestLocale } from 'next-intl/server';
 
 interface NewsItem {
   id: string;
@@ -57,11 +58,15 @@ interface PageProps {
 }
 
 export default async function NewsDetailPage({ params }: PageProps) {
-  if (!params?.id) {
+  const { id, locale } = params;
+
+  // Set the request locale to enable static rendering
+  setRequestLocale(locale);
+
+  if (!id) {
     return notFound();
   }
 
-  const { id, locale } = params;
   const newsItem = await getNewsItem(id);
 
   if (!newsItem) {

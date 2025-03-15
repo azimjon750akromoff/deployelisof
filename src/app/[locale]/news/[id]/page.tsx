@@ -37,35 +37,38 @@ const newsItems: NewsItem[] = [
   },
 ];
 
-// Function to fetch a news item by ID
-async function getNewsItem(id: string | undefined): Promise<NewsItem | null> {
-  if (!id) return null;
+// ✅ Function to fetch a news item by ID
+async function getNewsItem(id: string): Promise<NewsItem | null> {
   return newsItems.find((item) => item.id === id) || null;
 }
 
-// Generate static paths for dynamic routes (SSG)
+// ✅ Generate static paths for dynamic routes (SSG)
 export async function generateStaticParams() {
   return newsItems.map((news) => ({
-    locale: 'en', // Ensure locales are included if needed
+    locale: 'en', // Ensure localization is correctly set up
     id: news.id,
   }));
 }
 
+// ✅ Corrected PageProps Type
 interface PageProps {
-  params?: {
-    locale?: string;
-    id?: string;
+  params: {
+    locale: string; // Required locale parameter
+    id: string; // Required id parameter
   };
 }
 
+// ✅ Fixed function signature for Next.js App Router
 export default async function NewsDetailPage({ params }: PageProps) {
-  if (!params?.id) {
+  const { id, locale } = params;
+
+  // If no ID, return 404
+  if (!id) {
     return notFound();
   }
 
-  const { id, locale } = params;
+  // Fetch the news item
   const newsItem = await getNewsItem(id);
-
   if (!newsItem) {
     return notFound();
   }

@@ -50,7 +50,7 @@ export function generateStaticParams() {
 }
 
 // ✅ Fix: Use `setRequestLocale` to prevent dynamic rendering
-export default async function NewsDetailPage({ params }: { params: { locale: string; id: string } }) {
+export default function NewsDetailPage({ params }: { params: { locale: string; id: string } }) {
   setRequestLocale(params.locale); // ✅ Enables static rendering
 
   if (!params?.id) return notFound();

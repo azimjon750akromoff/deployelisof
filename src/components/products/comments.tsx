@@ -31,7 +31,7 @@ const reviews = [
 
 const ReviewCard = ({ img, name, body, rating }: any) => {
   return (
-    <figure className="relative h-[250px] w-[200px] md:h-[386px] md:w-[550px] rounded-[5px] border p-4 md:p-8 flex-shrink-0">
+    <figure className="relative h-[265px] w-[200px] md:h-[386px] md:w-[550px] rounded-[5px] border p-4 md:p-8 flex-shrink-0">
       <div className="flex justify-between">
         <div className="flex flex-col gap-2 md:gap-4">
           <Image

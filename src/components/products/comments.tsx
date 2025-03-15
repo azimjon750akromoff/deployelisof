@@ -28,7 +28,6 @@ const reviews = [
     rating: 4,
   },
 ];
-
 const ReviewCard = ({ img, name, body, rating }: any) => {
   return (
     <figure className="relative h-[265px] w-[200px] md:h-[386px] md:w-[550px] rounded-[5px] border p-4 md:p-8 flex-shrink-0">

@@ -11,7 +11,7 @@ function Feedback() {
   const totalCards = 3; // Adjust based on the total number of feedback cards
   const [offset, setOffset] = useState(0);
   const [cardWidth, setCardWidth] = useState(570); // Default width
-  const [startX, setStartX] = useState(null); // For touch events
+  const [startX, setStartX] = useState<number | null>(null);
   const marqueeRef = useRef(null); // Reference to the marquee container
 
   // Dynamically update card width based on screen size
@@ -36,7 +36,7 @@ function Feedback() {
   };
 
   const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
-    setStartX(e.touches[0].clientX);
+    setStartX(e.touches[0].clientX as number);
   };
   
   const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {

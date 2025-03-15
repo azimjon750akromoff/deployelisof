@@ -55,10 +55,11 @@ function Feedback() {
     }
   };
   
-  const handleTouchEnd = (_: React.TouchEvent<HTMLDivElement>) => {
-    setStartX(null);
-  };
-  
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const handleTouchEnd = (_: React.TouchEvent<HTMLDivElement>) => {
+  setStartX(null);
+};
+
   
 
   return (

@@ -55,9 +55,10 @@ function Feedback() {
     }
   };
   
-  const handleTouchEnd = (e: React.TouchEvent<HTMLDivElement>) => {
+  const handleTouchEnd = (_: React.TouchEvent<HTMLDivElement>) => {
     setStartX(null);
   };
+  
   
 
   return (

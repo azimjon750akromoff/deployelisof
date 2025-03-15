@@ -3,6 +3,7 @@
 
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
+import { setRequestLocale } from 'next-intl/server';
 
 interface NewsItem {
   id: string;
@@ -37,36 +38,25 @@ const newsItems: NewsItem[] = [
   },
 ];
 
-// Function to fetch a news item by ID
-async function getNewsItem(id: any): Promise<NewsItem | null> {
-  if (!id) return null;
-  return newsItems.find((item) => item.id === id) || null;
+// ✅ Generate Static Paths for SSG
+export function generateStaticParams() {
+  const locales = ['en', 'ru', 'uz']; // Your locales
+  return locales.flatMap((locale) =>
+    newsItems.map((news) => ({
+      locale,
+      id: news.id,
+    }))
+  );
 }
 
-// Generate static paths for dynamic routes (SSG)
-export function generateStaticParams(): any {
-  return newsItems.map((news) => ({
-    locale: 'en', // Ensure locales are included if needed
-    id: news.id,
-  }));
-}
+// ✅ Fix: Use `setRequestLocale` to prevent dynamic rendering
+export default async function NewsDetailPage({ params }: { params: { locale: string; id: string } }) {
+  setRequestLocale(params.locale); // ✅ Enables static rendering
 
-// Fix: Use `any` for params to bypass TypeScript errors
-interface PageProps {
-  params: any;
-}
+  if (!params?.id) return notFound();
 
-export default async function NewsDetailPage({ params }: PageProps) {
-  if (!params?.id) {
-    return notFound();
-  }
-
-  const { id, locale } = params;
-  const newsItem = await getNewsItem(id);
-
-  if (!newsItem) {
-    return notFound();
-  }
+  const newsItem = newsItems.find((item) => item.id === params.id);
+  if (!newsItem) return notFound();
 
   return (
     <div className="p-8 max-w-4xl mx-auto">

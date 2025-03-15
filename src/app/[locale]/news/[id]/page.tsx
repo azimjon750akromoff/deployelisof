@@ -51,23 +51,21 @@ export async function generateStaticParams() {
   }));
 }
 
-// ✅ Fix: Ensure correct `PageProps` typing
 interface PageProps {
-  params: {
-    locale: string; // Locale is required
-    id: string;
+  params?: {
+    locale?: string;
+    id?: string;
   };
 }
 
-// ✅ Use `PageProps` in function signature
 export default async function NewsDetailPage({ params }: PageProps) {
-  const { id, locale } = params;
-
-  if (!id) {
+  if (!params?.id) {
     return notFound();
   }
 
+  const { id, locale } = params;
   const newsItem = await getNewsItem(id);
+
   if (!newsItem) {
     return notFound();
   }

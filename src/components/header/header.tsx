@@ -36,7 +36,7 @@ const Navbar = ({ locale }: { locale: Locale }) => {
   return (
     <nav className="my-container flex justify-between items-center">
       {/* Left Logo Section */}
-      <div className="left">
+      <div className="left pt-2">
         <ResponsiveLogo />
       </div>
 

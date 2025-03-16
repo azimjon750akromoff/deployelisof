@@ -85,7 +85,7 @@ export default async function NewsDetailPage({ params }: PageProps) {
         priority
       />
       <p className="text-lg text-gray-700 mb-6">{newsItem.content}</p>
-      <p className="text-sm text-gray-500">Published on: {newsItem.date}</p>
+      <p className="text-md text-gray-500">Published on: {newsItem.date}</p>
     </div>
   );
 }

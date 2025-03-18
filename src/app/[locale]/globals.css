@@ -183,3 +183,17 @@ html {
   .disabled-input {
     pointer-events: auto;
   }
+
+
+
+  .input-container {
+    position: relative;
+    min-height: 80px; 
+  }
+  
+  .text-red-500 {
+    position: absolute;
+    bottom: -20px;
+    font-size: 14px;
+  }
+  

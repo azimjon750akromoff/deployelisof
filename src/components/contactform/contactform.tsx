@@ -36,9 +36,9 @@ const ContactForm = () => {
   };
 
   return (
-    <div className="flex justify-center  font-gilroy">
+    <div className="flex justify-center pb-4 font-gilroy">
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 w-full max-w-[420px]">
-        <div className="space-y-4">
+        <div className="space-y-5">
           {/* Name */}
           <div className="relative">
             <input
